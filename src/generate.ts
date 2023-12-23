@@ -1,4 +1,4 @@
-import seedrandom from "seedrandom";
+import seedrandom from "./seedrandom";
 import { newCard } from "./card";
 
 createCards();

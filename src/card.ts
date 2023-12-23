@@ -1,4 +1,4 @@
-import seedrandom from "seedrandom";
+import seedrandom from "./seedrandom";
 
 function transposeMatrix(matrix: number[][]) {
   const size = matrix.length;
