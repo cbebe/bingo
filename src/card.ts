@@ -46,7 +46,7 @@ export function newCard(rng: () => number) {
   return card;
 }
 
-function getCard(n: number) {
+export function getCard(n: number) {
   const rng = seedrandom("bingo");
   if (n < 1 || !Number.isInteger(n)) {
     throw new Error("Enter an integer > 1");
@@ -104,5 +104,5 @@ export function handleGenerateCards(e: SubmitEvent) {
   const url = new URL("/card", window.location.href);
   url.searchParams.append("id", id);
   url.searchParams.append("code", code);
-  window.open(url, "_blank").focus();
+  window.open(url, "_blank")!.focus();
 }
