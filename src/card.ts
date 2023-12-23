@@ -60,7 +60,7 @@ export function getCard(n: number) {
 function createCardNumbers(start: number, count: number) {
   const rng = seedrandom("bingo");
   let i = 0;
-  while (++i !== start) {
+  while (++i < start) {
     rng();
   }
   return Array(count).fill(0).map(() => btoa((rng() * 1000).toString()))
@@ -98,6 +98,9 @@ export function handleGenerateCards(e: SubmitEvent) {
     startInput.nextElementSibling!.innerHTML = "";
     startInput.classList.remove("is-invalid");
   }
+
+  if (invalid) return;
+
   const numbers = createCardNumbers(start, nCards);
   const id = Object.keys(numbers).join(",");
   const code = Object.values(numbers).join(",");
