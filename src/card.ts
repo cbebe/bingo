@@ -51,7 +51,7 @@ export function getCard(n: number) {
   if (n < 1 || !Number.isInteger(n)) {
     throw new Error("Enter an integer > 1");
   }
-  while (n--) {
+  while (--n) {
     rng();
   }
   return newCard(seedrandom(btoa((rng() * 1000).toString())));

@@ -24,6 +24,28 @@
     #error {
       display: revert;
     }
+
+    .bingo>.row:first-child>.col {
+      aspect-ratio: auto;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .bingo>.row:not(:first-child)>.col {
+      aspect-ratio: 1 / 1;
+      text-align: center;
+      border: 1px solid black;
+      margin: 0.25rem;
+    }
+
+    .bingo>.row>.col.filled {
+      background-color: #198754cc;
+    }
+
+    .bingo>.row>.col.filled::after {
+      display: block;
+      content: "x";
+    }
   </style>
 </head>
 
@@ -50,16 +72,12 @@
   </div>
   <div id="validate" class="container d-none flex-column w-100 h-100">
     <button type="button" class="btn-close my-2" aria-label="Close"></button>
-    <div class="row">
-      <form class="mb-3 d-flex flex-column" id="card-number" autocomplete="off">
-        <label for="card" class="form-label">Card Number</label>
-        <span class="invalid-feedback" id="error"></span>
-        <input type="text" name="card" inputmode="numeric" pattern="[0-9]+" class="form-control" required="true">
-        <button class="btn btn-primary mt-3" type="submit">Check Card</button>
-      </form>
-    </div>
-    <div class="row">
-    </div>
+    <form class="mb-3 d-flex flex-column" id="card-number" autocomplete="off">
+      <label for="card" class="form-label">Card Number</label>
+      <input type="text" name="card" inputmode="numeric" pattern="([0-9]+,?)+" class="form-control" required="true">
+      <span class="invalid-feedback"></span>
+      <button class="btn btn-primary mt-3" type="submit">Check Card</button>
+    </form>
   </div>
   <div id="generate" class="container d-none flex-column w-100 h-100">
     <button type="button" class="btn-close my-2" aria-label="Close"></button>
@@ -70,7 +88,7 @@
         <span class="invalid-feedback"></span>
 
         <label for="n-cards" class="form-label">Number of Cards to Generate</label>
-        <span class="invalid-feedback" id="error"></span>
+        <span class="invalid-feedback"></span>
         <input type="text" name="n-cards" inputmode="numeric" pattern="[0-9]+" class="form-control" required="true">
         <span class="invalid-feedback"></span>
 
@@ -79,10 +97,6 @@
     </div>
   </div>
   <script type="module" src="/src/main.ts"></script>
-</body>
-
-</html>
-<script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>

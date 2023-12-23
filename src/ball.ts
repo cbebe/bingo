@@ -13,15 +13,19 @@ function addNumber(n: number) {
   btn.addEventListener("click", function cb() {
     existingNumbers.removeChild(li);
     btn.removeEventListener("click", cb);
+    saveBallSet();
   });
   existingNumbers.prepend(li);
+  saveBallSet();
 }
 
-function getBallSet(): Set<number> {
+function getBalls() {
   const balls = document.querySelector<HTMLUListElement>("#balls")!;
-  return new Set<number>(
-    Array.from(balls.children).map((e) => parseInt(e.innerHTML.slice(1))),
-  );
+  return Array.from(balls.children).map((e) => parseInt(e.innerHTML.slice(1)));
+}
+
+export function getBallSet(): Set<number> {
+  return new Set<number>(getBalls());
 }
 
 export function handleAddBall(e: SubmitEvent) {
@@ -60,5 +64,17 @@ export function clearBalls() {
   if (confirm("Are you sure you want to clear the balls?")) {
     const balls = document.querySelector<HTMLUListElement>("#balls")!;
     balls.innerHTML = "";
+    saveBallSet();
   }
+}
+
+export function loadBallSet() {
+  const b = localStorage.getItem("balls");
+  if (b) {
+    b.split(",").reverse().map((e) => parseInt(e)).forEach((n) => addNumber(n));
+  }
+}
+
+function saveBallSet() {
+  localStorage.setItem("balls", getBalls().join(","));
 }

@@ -1,6 +1,7 @@
 import "./style.css";
 import { handleGenerateCards } from "./card";
-import { addRandomBall, clearBalls, handleAddBall } from "./ball";
+import { addRandomBall, clearBalls, handleAddBall, loadBallSet } from "./ball";
+import { handleValidateCard } from "./validate";
 
 function toggleDisplay(e: Element) {
   e.classList.toggle("d-flex");
@@ -26,7 +27,10 @@ const handlers = {
   "#cards": ["submit", handleGenerateCards],
   "#validate-card": ["click", toggleValidateCard],
   "#validate > button.btn-close": ["click", toggleValidateCard],
+  "#card-number": ["submit", handleValidateCard],
 } as const;
+
+loadBallSet();
 
 for (const k in handlers) {
   // @ts-expect-error
