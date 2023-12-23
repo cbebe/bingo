@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		table {
+			width: 90%;
+		}
+
+		th,
+		td {
+			width: 20%;
+			position: relative;
+		}
+
+
+		td .content {
+			aspect-ratio: 1 / 1;
+			border: 3px solid black;
+			text-align: center;
+			position: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.row {
+			display: flex;
+			margin: 2rem;
+		}
+
+		.column {
+			flex: 50%;
+		}
+	</style>
+	<style media="print">
+		@page {
+			size: auto;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="module" src="/src/generate.ts"></script>
+</body>
+
+</html>
