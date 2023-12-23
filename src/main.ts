@@ -1,3 +1,4 @@
+import './scss/styles.scss';
 import "./style.css";
 import { handleGenerateCards } from "./card";
 import { addRandomBall, clearBalls, handleAddBall, loadBallSet } from "./ball";
