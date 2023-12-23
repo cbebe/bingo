@@ -30,7 +30,7 @@ export function handleAddBall(e: SubmitEvent) {
   const ball = new FormData(form).get("ball")?.toString();
   if (!ball) return;
   const ballInput = form.querySelector<HTMLInputElement>("[name=ball]")!;
-  const errorMsg = form.querySelector<HTMLSpanElement>("#error")!;
+  const errorMsg = ballInput.nextElementSibling!;
   const number = parseInt(ball.match(/[BINGO]?([0-9]+)/)?.[1] || "0");
   const balls = getBallSet();
   if (number < 1 || number > 75) {
