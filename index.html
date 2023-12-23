@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/bingo/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
+  <style>
+    span.badge.bg-danger.rounded-pill {
+      cursor: pointer;
+    }
+
+    body {
+      margin: 0;
+      height: 100%;
+    }
+
+    .container {
+      min-height: 100vh;
+    }
+
+    #error {
+      display: revert;
+    }
+
+    .bingo>.row:first-child>.col {
+      aspect-ratio: auto;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .bingo>.row:not(:first-child)>.col {
+      aspect-ratio: 1 / 1;
+      text-align: center;
+      border: 1px solid black;
+      margin: 0.25rem;
+    }
+
+    .bingo>.row>.col.filled {
+      background-color: #198754cc;
+    }
+
+    .bingo>.row>.col.filled::after {
+      display: block;
+      content: "x";
+    }
+  </style>
+  <script type="module" crossorigin src="/bingo/assets/main-MXtSjapJ.js"></script>
+  <link rel="modulepreload" crossorigin href="/bingo/assets/card-2aunGIH8.js">
+  <link rel="stylesheet" crossorigin href="/bingo/assets/main-ZXX7MXNL.css">
+</head>
+
+<body>
+  <div id="main" class="container d-flex flex-column w-100 h-100">
+    <div class="row">
+      <div class="card">
+        <form class="mb-3 d-flex flex-column" id="ball-number" autocomplete="off">
+          <label for="ball" class="form-label">Ball Number</label>
+          <input type="text" name="ball" inputmode="numeric" pattern="[BINGO]?[0-9]+" class="form-control"
+            required="true">
+          <span class="invalid-feedback"></span>
+          <button class="btn btn-primary mt-3" type="submit">Add Ball</button>
+        </form>
+        <button class="btn btn-warning" id="random-ball">Add random ball</button>
+        <button class="btn mt-3 btn-danger" id="clear-balls">Clear balls</button>
+        <button class="btn mt-3 btn-secondary" id="generate-cards">Generate Cards</button>
+        <button class="btn mt-3 btn-success" id="validate-card">Validate Card</button>
+      </div>
+    </div>
+    <div class="row mt-3 px-3">
+      <ul class="list-group" id="balls"></ul>
+    </div>
+  </div>
+  <div id="validate" class="container d-none flex-column w-100 h-100">
+    <button type="button" class="btn-close my-2" aria-label="Close"></button>
+    <form class="mb-3 d-flex flex-column" id="card-number" autocomplete="off">
+      <label for="card" class="form-label">Card Number</label>
+      <input type="text" name="card" inputmode="numeric" pattern="([0-9]+,?)+" class="form-control" required="true">
+      <span class="invalid-feedback"></span>
+      <button class="btn btn-primary mt-3" type="submit">Check Card</button>
+    </form>
+  </div>
+  <div id="generate" class="container d-none flex-column w-100 h-100">
+    <button type="button" class="btn-close my-2" aria-label="Close"></button>
+    <div class="row">
+      <form class="mb-3 d-flex flex-column" id="cards" autocomplete="off">
+        <label for="card-start" class="form-label">Card Number Start</label>
+        <input type="text" name="card-start" inputmode="numeric" pattern="[0-9]+" class="form-control" required="true">
+        <span class="invalid-feedback"></span>
+
+        <label for="n-cards" class="form-label">Number of Cards to Generate</label>
+        <span class="invalid-feedback"></span>
+        <input type="text" name="n-cards" inputmode="numeric" pattern="[0-9]+" class="form-control" required="true">
+        <span class="invalid-feedback"></span>
+
+        <button class="btn btn-primary mt-3" type="submit">Generate Cards</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Just contains all the classes that I use in JS-->
+  <div
+    class="mx-3 is-invalid list-group-item d-flex justify-content-between align-items-center badge bg-danger rounded-pill d-none col">
+  </div>
+</body>
+
+</html>
