@@ -104,7 +104,7 @@ export function handleGenerateCards(e: SubmitEvent) {
   const numbers = createCardNumbers(start, nCards);
   const id = Object.keys(numbers).join(",");
   const code = Object.values(numbers).join(",");
-  const url = new URL("/card", window.location.href);
+  const url = new URL("./card", window.location.href + "/");
   url.searchParams.append("id", id);
   url.searchParams.append("code", code);
   window.open(url, "_blank")!.focus();
